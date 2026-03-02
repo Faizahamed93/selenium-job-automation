@@ -1,5 +1,5 @@
-[README.md](https://github.com/user-attachments/files/25676159/README.md)
-# 💼 LinkedIn Auto Applier — Java Edition
+[README (1).md](https://github.com/user-attachments/files/25682103/README.1.md)
+# 💼 LinkedIn Auto Applier 
 
 > Automated LinkedIn Easy Apply bot built with **Selenium + Spring Boot + Maven + Java 17**
 
@@ -33,7 +33,7 @@ All your settings are stored in a single `application.properties` file — no Ja
 | Google Chrome | Latest | https://www.google.com/chrome |
 | Eclipse IDE | 2023 or higher | https://www.eclipse.org/downloads |
 
-> **Note:** ChromeDriver is downloaded **automatically** by WebDriverManager. You do NOT need to install it manually. This replaces `windows-setup.bat` and `setup.sh` entirely.
+> **Note:** ChromeDriver is downloaded **automatically** by WebDriverManager. You do NOT need to install it manually.
 
 ---
 
@@ -409,26 +409,25 @@ settings.max_applications=0
 
 | Error / Problem | Fix |
 |---|---|
-| `invalid session id / browser closed` | Chrome closed unexpectedly. Add longer timeouts in `ChromeSessionManager.java`. Also update Chrome to latest version. |
-| `application.properties not found` | Run Maven → Update Project in Eclipse first. Make sure you are running `Main.java`. |
+| `invalid session id / browser closed` | Chrome closed unexpectedly. Add longer timeouts in `ChromeSessionManager.java`. Update Chrome to latest version. |
+| `application.properties not found` | Run Maven → Update Project in Eclipse. Make sure you are running `Main.java`. |
 | `CsvValidationException on readNext()` | Add `throws CsvValidationException` to the method and import `com.opencsv.exceptions.CsvValidationException` |
 | Switch expression not supported | Eclipse is using Java 8 or 11. Right-click project → Properties → Java Build Path → change JRE to Java 17 |
 | Chrome won't open | Make sure Google Chrome is installed. WebDriverManager handles ChromeDriver automatically. |
 | Login fails / CAPTCHA shown | Log in manually in the opened Chrome window then click OK on the dialog. |
 | Port 5000 already in use | Change `server.port=5000` to `server.port=8080` in `application.properties` |
 | Maven not downloading | Check internet connection. Disable VPN. Right-click project → Maven → Update Project → Force Update. |
-| No job cards found | LinkedIn may have updated its HTML. Check that `search.easy_apply_only=true` and your search terms return results manually. |
-| Bot applies to wrong jobs | Add keywords to `search.bad_words` in `application.properties` to skip unwanted descriptions. |
+| No job cards found | Check that `search.easy_apply_only=true` and your search terms return results when searched manually. |
+| Bot applies to wrong jobs | Add keywords to `search.bad_words` to skip unwanted job descriptions. |
 
-### Fix for Chrome Closed Error (from log.txt)
+### Fix for Chrome Closed Error
 
-If you see this error:
+If you see this in `logs/log.txt`:
 ```
 invalid session id: session deleted as the browser has closed the connection
 ```
 
 Add these lines in `ChromeSessionManager.java` after creating the driver:
-
 ```java
 driver = new ChromeDriver(options);
 driver.manage().window().maximize();
@@ -440,31 +439,10 @@ wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 ```
 
 And in `JobApplier.java` inside `loginToLinkedIn()`:
-
 ```java
 driver.get(LINKEDIN + "/login");
 Helpers.buffer(3);   // increase from 2 to 3
 ```
-
----
-
-## 🔄 Python to Java Mapping
-
-| Python File | Java Equivalent |
-|---|---|
-| `runAiBot.py` | `Main.java` + `JobApplier.java` |
-| `open_chrome.py` | `ChromeSessionManager.java` |
-| `helpers.py` | `Helpers.java` |
-| `clickers_and_finders.py` | `ClickersAndFinders.java` |
-| `personals.py` | `application.properties` (personal.*) |
-| `secrets.py` | `application.properties` (secrets.*) |
-| `search.py` | `application.properties` (search.*) |
-| `questions.py` | `application.properties` (questions.*) |
-| `settings.py` | `application.properties` (settings.*) |
-| `validator.py` | `ConfigValidator.java` |
-| `app.py` (Flask) | `WebAppController.java` + `CsvService.java` |
-| `index.html` | `dashboard.html` (Thymeleaf) |
-| `windows-setup.bat` + `setup.sh` | **Eliminated** — WebDriverManager does it in 1 line |
 
 ---
 
