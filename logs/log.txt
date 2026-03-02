@@ -1,0 +1,13 @@
+2026-02-27T11:29:55.923552300 | Setting up ChromeDriver...
+2026-02-27T11:30:18.240046500 | Using temp Chrome profile (safe mode)
+2026-02-27T11:30:24.991721 | Chrome started successfully.
+2026-02-27T11:30:56.650229700 | === Searching: Software Engineer ===
+2026-02-27T11:30:56.694937200 | [ERROR] Fatal error | invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=145.0.7632.117)
+Build info: version: '4.14.1', revision: '03f8ede370'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '25.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [d4929719fa6df9d3ce30ca85b29ff218, get {url=https://www.linkedin.com/jobs/}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 145.0.7632.117, chrome: {chromedriverVersion: 145.0.7632.117 (de4e5d6e13b..., userDataDir: C:\Users\FAIZAH~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55275}, goog:processID: 5320, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55275/devtoo..., se:cdpVersion: 145.0.7632.117, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d4929719fa6df9d3ce30ca85b29ff218

@@ -1,0 +1,21 @@
+# Maven
+target/
+
+# Eclipse
+.settings/
+.project
+.classpath
+
+# Build
+bin/
+
+# Logs
+*.log
+
+# Compiled files
+*.class
+
+# Drivers
+chromedriver.exe
+geckodriver.exe
+msedgedriver.exe
